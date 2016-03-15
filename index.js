@@ -33,7 +33,11 @@ app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
+  res.status(200).send('I dream of being a web site.');
+});
+
+app.get('/test', function(req, res) {
+  res.sendFile(path.join(__dirname, '/public/test.html'));
 });
  // If you are migrating a webapp hosted on domain.parseapp.com:
  // Remove statement above serving the 200 status (app.get('/ function()});

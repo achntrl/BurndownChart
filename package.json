@@ -1,5 +1,5 @@
 {
-  "name": "Burndown Chart™",
+  "name": "burndown-chart",
   "version": "1.4.0",
   "description": "An app to plot burndown charts",
   "main": "index.js",

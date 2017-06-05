@@ -25,9 +25,6 @@
     "react-dom": "^15.5.4",
     "react-materialize": "^0.18.4",
     "custom-react-scripts": "^0.0.23",
-    "recharts": "^0.22.4"
-  },
-    "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-config-standard": "^10.2.1",
@@ -36,6 +33,9 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-standard": "^3.0.1",
+    "recharts": "^0.22.4"
+  },
+    "devDependencies": {
     "mobx-react-devtools": "^4.2.13"
   },
   "scripts": {

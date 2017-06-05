@@ -12,10 +12,39 @@
     "express": "~4.11.x",
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
-    "parse-server": "*"
+    "parse-server": "*",
+    "lodash": "^4.17.4",
+    "materialize-css": "^0.98.2",
+    "mobx": "^3.1.10",
+    "mobx-react": "^4.2.1",
+    "moment": "^2.18.1",
+    "parse": "^1.9.2",
+    "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.5.2",
+    "react-dom": "^15.5.4",
+    "react-materialize": "^0.18.4",
+    "recharts": "^0.22.4"
+  },
+    "devDependencies": {
+    "custom-react-scripts": "^0.0.23",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "mobx-react-devtools": "^4.2.13"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "parse": "node index.js",
+    "lint": "eslint src tests; exit 0",
+    "fix": "eslint src tests --fix",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "engines": {
     "node": ">=4.3"

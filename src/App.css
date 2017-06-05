@@ -1,0 +1,14 @@
+.header {
+  text-align: center;
+}
+
+.chart-container {
+  height: 310px;
+  overflow: scroll;
+  margin-right: 50px;
+}
+
+.close-button {
+  position: relative;
+  top: 20px;
+}

@@ -1,1 +1,1 @@
-web: yarn build && yarn parse
+web: yarn parse

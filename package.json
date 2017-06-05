@@ -41,10 +41,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "parse": "node index.js",
+    "parse": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 index.js",
     "lint": "eslint src tests; exit 0",
     "fix": "eslint src tests --fix",
     "test": "react-scripts test --env=jsdom",
+    "heroku-postbuild": "yarn build",
     "eject": "react-scripts eject"
   },
   "engines": {

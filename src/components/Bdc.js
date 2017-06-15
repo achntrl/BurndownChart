@@ -2,26 +2,35 @@ import _ from 'lodash';
 import { observer } from 'mobx-react';
 import moment from 'moment';
 import { PropTypes } from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import { Button, Card, Col, Input, Row } from 'react-materialize';
+import DatePicker from 'material-ui/DatePicker';
 
 import Chart from './Chart';
 import InputProgress from './InputProgress';
 import bdcStore from '../store';
 
-const Bdc = observer(({ id }) => {
-  const bdc = bdcStore.getBdcById(id);
+@observer
+class Bdc extends Component {
+  render() {
+  const bdc = bdcStore.getBdcById(this.props.id);
   return (
     <Col m={12} s={12} l={6}>
       <Card>
         <Row>
+
           <Col>
+            <DatePicker
+              hintText="Portrait Dialog"
+              formatDate={date => moment(date).format('DD/MM/YYYY')}
+              onChange={(event, date) => bdc.setStartDate(moment(date).format('YYYY-MM-DD'))}
+              defaultDate={moment(bdc.startDate).toDate()}
+            />
             <Input
               label='start date'
-              type='date'
+              type='text'
               className='datepicker'
-              defaultValue={moment(bdc.startDate).format('YYYY-MM-DD')}
-              onChange={(event) => bdc.setStartDate(event.target.value)}
+              onChange={(event, value) => {console.log(event, value); bdc.setStartDate(event.target.value)}}
           />
           </Col>
           <Col s={2}>
@@ -44,7 +53,7 @@ const Bdc = observer(({ id }) => {
             <Button className='light-blue' onClick={() => bdc.editMode = !bdc.editMode}>Edit</Button>
           </Col>
           <Col s={2}>
-            <Button className='red' onClick={() => bdcStore.deleteBdc(id)}>Delete</Button>
+            <Button className='red' onClick={() => bdcStore.deleteBdc(this.props.id)}>Delete</Button>
           </Col>
         </Row>
 
@@ -61,8 +70,8 @@ const Bdc = observer(({ id }) => {
         </div>
       </Card>
     </Col>
-  );
-});
+  );}
+}
 
 Bdc.propTypes = {
   id: PropTypes.string

@@ -1,14 +1,19 @@
 .header {
   text-align: center;
+  margin-bottom: 35px;
+}
+
+.header-button {
+  margin-left: 20px;
 }
 
 .chart-container {
   height: 310px;
   overflow: scroll;
   margin-right: 50px;
+  margin-top: 25px;
 }
 
-.close-button {
-  position: relative;
-  top: 20px;
+.bdc {
+  border: 15px solid transparent;
 }

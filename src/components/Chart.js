@@ -15,8 +15,8 @@ const Chart = observer(({data}) => {
         <CartesianGrid strokeDasharray='3 3' />
         <Tooltip content={<BdcTooltip />} />
         <Legend />
-        <Line type='linear' dataKey='points' stroke='#f44336' activeDot={{r: 8}} isAnimationActive={false} />
-        <Line type='linear' dataKey='remaining' stroke='#2196f3' activeDot={{r: 8}} isAnimationActive={false} />
+        <Line type='linear' dataKey='points' stroke='#DB3737' activeDot={{r: 8}} isAnimationActive={false} />
+        <Line type='linear' dataKey='remaining' stroke='#137CBD' activeDot={{r: 8}} isAnimationActive={false} />
       </LineChart>
     </ResponsiveContainer>
   );

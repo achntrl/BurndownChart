@@ -2,67 +2,108 @@ import _ from 'lodash';
 import { observer } from 'mobx-react';
 import moment from 'moment';
 import { PropTypes } from 'prop-types';
-import React from 'react';
-import { Button, Card, Col, Input, Row } from 'react-materialize';
+import React, { Component } from 'react';
 
 import Chart from './Chart';
 import InputProgress from './InputProgress';
 import bdcStore from '../store';
 
-const Bdc = observer(({ id }) => {
-  const bdc = bdcStore.getBdcById(id);
-  return (
-    <Col m={12} s={12} l={6}>
-      <Card>
-        <Row>
-          <Col>
-            <Input
-              label='start date'
-              type='date'
-              className='datepicker'
-              defaultValue={moment(bdc.startDate).format('YYYY-MM-DD')}
-              onChange={(event) => bdc.setStartDate(event.target.value)}
-          />
-          </Col>
-          <Col s={2}>
-            <Input
-              label='days'
-              type='number'
-              defaultValue={bdc.days}
-              onChange={(event) => bdc.setDays(parseInt(event.target.value, 10))}
-          />
-          </Col>
-          <Col s={2}>
-            <Input
-              label='points'
-              type='number'
-              defaultValue={bdc.points}
-              onChange={(event) => bdc.setPoints(parseInt(event.target.value, 10))}
-          />
-          </Col>
-          <Col s={2}>
-            <Button className='light-blue' onClick={() => bdc.editMode = !bdc.editMode}>Edit</Button>
-          </Col>
-          <Col s={2}>
-            <Button className='red' onClick={() => bdcStore.deleteBdc(id)}>Delete</Button>
-          </Col>
-        </Row>
+import { Row, Col } from 'react-flexbox-grid';
+import { Button, EditableText, NumericInput } from '@blueprintjs/core'
+import { DateInput } from '@blueprintjs/datetime';
 
-        <div className='chart-container'>
-          {!bdc.editMode && <Chart data={bdc.chartData} />}
-          {bdc.editMode && _.times(bdc.days, (index) => {
-            return <InputProgress
-              key={index}
-              index={index + 1}
-              bdc={bdc}
-          />;
-          })
-        }
+@observer
+class Bdc extends Component {
+  renderChart(bdc) {
+    return (
+      <div className='chart-container'>
+        <Chart data={bdc.chartData} />
+      </div>
+    )
+  }
+
+  renderEdits(bdc) {
+    return (
+      <Row className='chart-container'>
+        {_.times(bdc.days, (index) => {
+          return <InputProgress
+            key={index}
+            index={index + 1}
+            bdc={bdc}
+        />;})}
+      </Row>
+    )
+  }
+
+  render() {
+    const bdc = bdcStore.getBdcById(this.props.id);
+    let chartArea = null
+    if (bdc.editMode) {
+      chartArea = this.renderEdits(bdc)
+    } else {
+      chartArea = this.renderChart(bdc)
+    }
+
+    return (
+      <Col xs={12} sm={12} md={12} lg={6} className='bdc'>
+        <div className='pt-card pt-elevation-2'>
+        <Row style={{justifyContent: 'center'}}>
+          <h2>
+            <EditableText
+              value={bdc.name}
+              onChange={(value) => bdc.setName(value)}
+            />
+          </h2>
+        </Row>
+          <Row>
+            <Col xs={2} xsOffset={1}>
+              <DateInput
+                placeholder='start date'
+                className='pt-fill'
+                value={moment(bdc.startDate).toDate()}
+                format={'DD/MM/YY'}
+                onChange={(date) => bdc.setStartDate(date)}
+            />
+            </Col>
+            <Col xs={2}>
+              <NumericInput
+                className='pt-fill'
+                placeholder='days'
+                value={bdc.days}
+                onValueChange={(number) => bdc.setDays(number)}
+              />
+            </Col>
+            <Col xs={2}>
+              <NumericInput
+                className='pt-fill'
+                placeholder='points'
+                value={bdc.points}
+                onValueChange={(number) => bdc.setPoints(number)}
+              />
+            </Col>
+            <Col xs={2}>
+              <Button
+                className='pt-intent-primary pt-fill'
+                onClick={() => bdc.editMode = !bdc.editMode}
+              >
+                Edit
+              </Button>
+            </Col>
+            <Col xs={2}>
+              <Button
+                className='pt-intent-danger pt-fill'
+                onClick={() => bdcStore.deleteBdc(this.props.id)}
+              >
+                Delete
+              </Button>
+            </Col>
+          </Row>
+          {chartArea}
         </div>
-      </Card>
-    </Col>
-  );
-});
+      </Col>
+    );
+  }
+}
 
 Bdc.propTypes = {
   id: PropTypes.string

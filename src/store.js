@@ -52,8 +52,8 @@ class Bdc {
     this.points = value;
   }
 
-  setStartDate(value) {
-    this.startDate = value;
+  setStartDate(date) {
+    this.startDate = moment(date).format('YYYY-MM-DD');
   }
 
   setDone(value, index) {

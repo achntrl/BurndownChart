@@ -1,23 +1,22 @@
 import { observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Button, Input, Col} from 'react-materialize';
+import { Col } from 'react-flexbox-grid';
+import { Button, NumericInput } from '@blueprintjs/core'
 
 const InputProgress = observer(({bdc, index}) => {
   return (
-    <div className='inline'>
-      <Col s={5} offset='s1'>
-        <Input
-          s={6}
-          type='number'
+    // offset only on left items
+    <Col sm={5} smOffset={index % 2}>
+      <div className="pt-control-group">
+        <NumericInput
           value={bdc.done[index]}
-          label={`Days ${index}`}
-          onChange={(event) => bdc.setDone(parseInt(event.target.value, 10), index)
-        }
-      />
-        <Button className='close-button' flat onClick={() => bdc.clearDone(index)} icon='close' />
-      </Col>
-    </div>
+          placeholder={`Days ${index}`}
+          onValueChange={(number) => bdc.setDone(number, index)}
+        />
+        <Button iconName="delete" onClick={() => bdc.clearDone(index)}/>
+      </div>
+    </Col>
   );
 });
 

@@ -1,21 +1,24 @@
 import _ from 'lodash';
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Row } from 'react-materialize';
 
 import Bdc from '../components/Bdc';
 import bdcStore from '../store';
 
+import { Grid, Row } from 'react-flexbox-grid';
+
 const BdcList = observer(() => {
   return (
-    <Row>
-      {_.map(bdcStore.getIds, id =>
-        <Bdc
-          id={id}
-          key={id}
-      />)
-    }
-    </Row>
+    <Grid fluid>
+      <Row>
+        {_.map(bdcStore.getIds, id =>
+          <Bdc
+            id={id}
+            key={id}
+        />)
+      }
+      </Row>
+    </Grid>
   );
 });
 

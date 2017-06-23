@@ -41,6 +41,9 @@ class Bdc {
   }
 
   setDays(value) {
+    if (value > this.days && this.done.length <= value) {
+      this.done = _.concat(this.done.slice(), _.times(value - this.days, () => ""))
+    }
     this.days = value;
   }
 

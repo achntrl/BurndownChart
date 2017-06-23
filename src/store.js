@@ -4,7 +4,7 @@ import _ from "lodash";
 import Parse from "parse";
 
 Parse.initialize(process.env.APP_ID || 'myAppId');
-Parse.serverURL = process.env.SERVER_URL || 'https://fast-hamlet-28839.herokuapp.com/parse'
+Parse.serverURL = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000'
 
 class Bdc {
   id = null;

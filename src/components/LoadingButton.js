@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Button, Intent } from '@blueprintjs/core'
+import { Button, Intent, Tooltip } from '@blueprintjs/core'
 
 class LoadingButton extends Component {
   constructor(props){
@@ -31,13 +31,19 @@ class LoadingButton extends Component {
 
   render() {
     return (
-      <Button
-        className='pt-large header-button'
-        loading={this.state.loading}
-        iconName={this.props.iconName}
-        intent={this.state.intent}
-        onClick={() => this.onClick()}
-      />
+      <Tooltip
+        content="Save your burndown charts"
+        hoverOpenDelay={1000}
+        useSmartPositioning={true}
+      >
+        <Button
+          className='pt-large header-button'
+          loading={this.state.loading}
+          iconName={this.props.iconName}
+          intent={this.state.intent}
+          onClick={() => this.onClick()}
+        />
+      </Tooltip>
   )}
 
 }

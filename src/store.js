@@ -24,18 +24,18 @@ class Bdc {
   @computed get chartData() {
     const data = []
     for (let i = 0; i <= this.days; i++ ) {
-      let remaining
+      let actual
       if (this.done[i] !== "")
       {
-        remaining = this.points - this.done[i]
+        actual = this.points - this.done[i]
       } else {
-        remaining = null
+        actual = null
       }
 
       data.push({
         day: moment(this.startDate).add(i, 'days').format("DD/MM"),
-        points: (this.days - i) * (this.points /this.days),
-        remaining: remaining
+        ideal: (this.days - i) * (this.points /this.days),
+        actual: actual
       })
     }
     return data;

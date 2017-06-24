@@ -6,29 +6,12 @@ import React from 'react';
 // import { Button } from 'react-materialize';
 
 import '../App.css';
+import AppHeader from '../components/AppHeader';
 import BdcList from '../components/BdcList';
-import bdcStore from '../store';
-
-import { Button, Intent } from '@blueprintjs/core'
 
 const App = observer(() => (
   <div className='app'>
-    <div className='header'>
-      <h1>Burndown Charts™
-      <Button
-        className='pt-large header-button'
-        iconName='add'
-        intent={Intent.SUCCESS}
-        onClick={() => bdcStore.createBdc()}
-      />
-      <Button
-        className='pt-large header-button'
-        iconName='saved'
-        intent={Intent.PRIMARY}
-        onClick={() => bdcStore.save()}
-      />
-      </h1>
-    </div>
+    <AppHeader />
     <BdcList />
   </div>
 ));

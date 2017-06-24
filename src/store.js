@@ -125,10 +125,12 @@ class BdcStore {
   }
 
   save() {
+    const promises = []
     this.parseBdcs.forEach((parseBdc, index) => {
       this.bdcToParse(this.bdcs[index], parseBdc);
-      parseBdc.save()
+      promises.push(parseBdc.save())
     })
+    return promises
   }
 
   deleteBdc(id) {

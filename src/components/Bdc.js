@@ -70,6 +70,7 @@ class Bdc extends Component {
                 className='pt-fill'
                 placeholder='days'
                 value={bdc.days}
+                max={bdc.MAX_DAYS}
                 onValueChange={(number) => bdc.setDays(number)}
               />
             </Col>

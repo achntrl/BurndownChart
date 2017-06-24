@@ -8,6 +8,7 @@ Parse.serverURL = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000'
 
 class Bdc {
   id = null;
+  MAX_DAYS = 1000;
 
   @observable editMode = false;
   @observable days = 5;
@@ -41,6 +42,9 @@ class Bdc {
   }
 
   setDays(value) {
+    if (value > this.MAX_DAYS) {
+      value = this.MAX_DAYS;
+    }
     if (value > this.days && this.done.length <= value) {
       this.done = _.concat(this.done.slice(), _.times(value - this.days, () => ""))
     }

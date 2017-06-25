@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import bdcStore from '../store';
-import { Button, Intent, Tooltip } from '@blueprintjs/core'
+import { Button, Intent, Position, Tooltip } from '@blueprintjs/core'
 
 import LoadingButton from './LoadingButton';
 
@@ -14,7 +14,7 @@ class AppHeader extends Component {
         <Tooltip
           content="Add a burndown chart"
           hoverOpenDelay={1000}
-          useSmartPositioning={true}
+          position={Position.BOTTOM}
         >
           <Button
             className='pt-large header-button'

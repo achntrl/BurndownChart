@@ -9,7 +9,7 @@ import InputProgress from './InputProgress';
 import bdcStore from '../store';
 
 import { Row, Col } from 'react-flexbox-grid';
-import { Button, EditableText, NumericInput } from '@blueprintjs/core'
+import { Button, EditableText, Overlay, NumericInput, Tooltip } from '@blueprintjs/core'
 import { DateInput } from '@blueprintjs/datetime';
 
 @observer
@@ -57,30 +57,45 @@ class Bdc extends Component {
         </Row>
           <Row>
             <Col xs={2} xsOffset={1}>
-              <DateInput
-                placeholder='start date'
-                className='pt-fill'
-                value={moment(bdc.startDate).toDate()}
-                format={'DD/MM/YY'}
-                onChange={(date) => bdc.setStartDate(date)}
-            />
+              <Tooltip
+                content="Start date"
+                hoverOpenDelay={1000}
+              >
+                <DateInput
+                  placeholder='start date'
+                  className='pt-fill'
+                  value={moment(bdc.startDate).toDate()}
+                  format={'DD/MM/YY'}
+                  onChange={(date) => bdc.setStartDate(date)}
+                />
+              </Tooltip>
             </Col>
             <Col xs={2}>
-              <NumericInput
-                className='pt-fill'
-                placeholder='days'
-                value={bdc.days}
-                max={bdc.MAX_DAYS}
-                onValueChange={(number) => bdc.setDays(number)}
-              />
+              <Tooltip
+                content="Number of days to reach your goal"
+                hoverOpenDelay={1000}
+              >
+                <NumericInput
+                  className='pt-fill'
+                  placeholder='days'
+                  value={bdc.days}
+                  max={bdc.MAX_DAYS}
+                  onValueChange={(number) => bdc.setDays(number)}
+                />
+              </Tooltip>
             </Col>
             <Col xs={2}>
-              <NumericInput
-                className='pt-fill'
-                placeholder='points'
-                value={bdc.points}
-                onValueChange={(number) => bdc.setPoints(number)}
-              />
+              <Tooltip
+                content="Number of points to do"
+                hoverOpenDelay={1000}
+              >
+                <NumericInput
+                  className='pt-fill'
+                  placeholder='points'
+                  value={bdc.points}
+                  onValueChange={(number) => bdc.setPoints(number)}
+                />
+              </Tooltip>
             </Col>
             <Col xs={2}>
               <Button

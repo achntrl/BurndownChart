@@ -9,11 +9,17 @@ import InputProgress from './InputProgress';
 import bdcStore from '../store';
 
 import { Row, Col } from 'react-flexbox-grid';
-import { Button, EditableText, Overlay, NumericInput, Tooltip } from '@blueprintjs/core'
+import { Alert, Button, EditableText, Intent, NumericInput, Tooltip } from '@blueprintjs/core'
 import { DateInput } from '@blueprintjs/datetime';
 
 @observer
 class Bdc extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpenDelete: false,
+    }
+  }
   renderChart(bdc) {
     return (
       <div className='chart-container'>
@@ -34,6 +40,11 @@ class Bdc extends Component {
       </Row>
     )
   }
+
+  handleDeleteOpen = () => {this.setState({ isOpenDelete: true });}
+  // no need to set state because the object is deleted
+  handleDelete = () => {bdcStore.deleteBdc(this.props.id)}
+  handleDeleteCancel = () => {this.setState({ isOpenDelete: false});}
 
   render() {
     const bdc = bdcStore.getBdcById(this.props.id);
@@ -108,10 +119,22 @@ class Bdc extends Component {
             <Col xs={2}>
               <Button
                 className='pt-intent-danger pt-fill'
-                onClick={() => bdcStore.deleteBdc(this.props.id)}
+                onClick={this.handleDeleteOpen}
               >
                 Delete
               </Button>
+              <Alert
+                    intent={Intent.DANGER}
+                    isOpen={this.state.isOpenDelete}
+                    confirmButtonText="Delete"
+                    cancelButtonText="Cancel"
+                    onConfirm={this.handleDelete}
+                    onCancel={this.handleDeleteCancel}
+                >
+                  <p>
+                    Do you really want to delete the burndown chart "{bdc.name}""
+                  </p>
+                </Alert>
             </Col>
           </Row>
           {chartArea}

@@ -117,6 +117,7 @@ class BdcStore {
       success: (parseBdc) => {
         bdc.id =  parseBdc.id;
         this.bdcs.push(bdc)
+        this.parseBdcs.push(parseBdc)
       },
       error: (parseBdc, error) => {
         console.log("Error: " + error.message);

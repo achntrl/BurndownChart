@@ -22,5 +22,5 @@ Built on [Parse Server Exemple](https://github.com/parse-community/parse-server-
 * Clone the repo and change directory to it
 * Log in with the [Heroku Toolbelt](https://toolbelt.heroku.com/) and create an app: `heroku create`
 * Use the [mLab addon](https://elements.heroku.com/addons/mongolab): `heroku addons:create mongolab:sandbox --app YourAppName`
-* Add your env variables in the heroku admin panel (`APP_ID`, `MASTER_KEY`, `MONGODB_URI`, `PARSE_MOUNT`, `SERVER_URL`)
+* Add your env variables in the heroku admin panel (`APP_ID`, `MASTER_KEY`, `MONGODB_URI`, `PARSE_MOUNT`, `SERVER_URL`, `REACT_APP_SERVER_URL`)
 * Deploy it with: `git push heroku master`

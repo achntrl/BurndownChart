@@ -3,7 +3,7 @@ import moment from 'moment';
 import _ from "lodash";
 import Parse from "parse";
 
-Parse.initialize(process.env.APP_ID || 'myAppId');
+Parse.initialize(process.env.REACT_APP_ID || 'myAppId');
 Parse.serverURL = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000'
 
 class Bdc {

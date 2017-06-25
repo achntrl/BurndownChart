@@ -20,6 +20,10 @@
     "SERVER_URL": {
       "description": "URL to connect to your Heroku instance (update with your app's name + PARSE_MOUNT)",
       "value": "http://yourappname.herokuapp.com/parse"
+    },
+    "REACT_APP_SERVER_URL": {
+      "description": "URL to connect the React app to your Heroku instance (same as SERVER_URL)",
+      "value": "http://yourappname.herokuapp.com/parse"
     }
   },
   "image": "heroku/nodejs",

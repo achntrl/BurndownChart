@@ -2,7 +2,7 @@
 
 Burndown Chart application with Parse Server backend and React frontend.
 
-Built on [Parse Server Exemple](https://github.com/parse-community/parse-server-example)
+Built on [Parse Server Example](https://github.com/parse-community/parse-server-example)
 
 ### For Local Development
 
@@ -15,7 +15,7 @@ Built on [Parse Server Exemple](https://github.com/parse-community/parse-server-
 * By default it will use a path of /parse for the API routes.
 * You now have a database named "parse" that contains your Parse data
 * Install ngrok and you can test with devices
-* Run `heroku local web` to test the prod build of the React app on your local environement
+* Run `heroku local web` to test the prod build of the React app on your local environment
 
 ### Getting Started With Heroku + mLab Development
 

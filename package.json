@@ -20,7 +20,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-standard": "^3.0.1",
-    "express": "~4.11.x",
+    "express": "~4.17.x",
     "kerberos": "~0.0.x",
     "lodash": "^4.17.4",
     "materialize-css": "^0.98.2",
